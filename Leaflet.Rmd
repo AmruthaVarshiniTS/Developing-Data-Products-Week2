@@ -1,0 +1,26 @@
+---
+title: "Tourist places around Heritake City Mysore"
+author: "Amrutha Varshini"
+date: "June 22, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Places in and around the Heritage City MYSORE
+
+
+```{r echo=FALSE}
+library(leaflet)
+url <- "http://www.keralaholidaystourtravel.com/wp-content/uploads/2016/08/Tours_icon.png"
+myIcon <- makeIcon(iconUrl = url,iconWidth = 30,iconHeight = 40)
+myLatLong <- data.frame(lat=c(12.305144,12.272431,12.302447,12.421401,12.430581,12.306952,12.303975),
+                        lng=c(76.655322,76.670615,76.665535,76.571697,75.968056,76.650157,76.674878))
+myPopup <- c("Mysore Palace","Chamundi Hills","Mysore Zoo","Brindavan Gardens","Golden Temple Bylukuppe",
+             "Jaganmohana Palace","Karanji Lake")
+myLatLong %>% leaflet() %>% addTiles() %>%
+              addMarkers(icon=myIcon,popup=myPopup)
+```
+
